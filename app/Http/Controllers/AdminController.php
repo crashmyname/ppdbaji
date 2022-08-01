@@ -241,4 +241,28 @@ class AdminController extends Controller
         $request->session()->flash('sukses','Data berhasil diubah');
         return redirect('/datasiswa');
     }
+    
+    public function vlaporan(request $request)
+    {
+        // $pagination = 5;
+        // $datasekolah = DataPendidikan::distinct(['nama_sekolah'])->paginate($pagination);
+        // return view('admin.laporan',compact('datasekolah'))->with('no',($request->input('page',1)-1)*$pagination);
+        $datasekolah = DataPendidikan::distinct()->get(['jurusan']);
+        $chart = [];
+        $data = [];
+
+        foreach($datasekolah as $s){
+            $chart[] = $s->jurusan;
+            $char[] = $s->where('jurusan', $s->jurusan);
+            $data[] = $s->where('jurusan', $s->jurusan)->count();
+            $all[]= $s->distinct()->get()->count();
+        }
+        return view('admin.laporan',compact('datasekolah','chart','data','char','all'));
+    }
+
+    public function dlaporan(request $request,$jurusan)
+    {
+        $datasiswa = DataSiswa::join('data_pendidikans','data_pendidikans.id','=','data_siswas.id_siswa')->join('data_ortus','data_ortus.id_ortu','=','data_siswas.id_siswa')->where('jurusan', $jurusan)->get();
+        return view('admin.dlaporan',compact('datasiswa'));
+    }
 }

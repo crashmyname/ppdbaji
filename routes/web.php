@@ -35,6 +35,8 @@ Route::get('/bayar', [DashboardController::class, 'bayar'])->middleware('auth');
 Route::post('/bayar', [DashboardController::class, 'bayar'])->middleware('auth');
 Route::post('/pesan', [DashboardController::class, 'pesan'])->middleware('auth');
 Route::post('/form', [DataController::class, 'insertform'])->middleware('auth');
+Route::get('/uprofil/{id}', [DashboardController::class, 'formupprofil'])->middleware('auth');
+Route::post('/uprofil/{id}', [DashboardController::class, 'upprofil'])->middleware('auth');
 Route::get('/file', [DataController::class, 'file'])->middleware('auth');
 Route::post('/file', [DataController::class, 'uploadfile'])->middleware('auth');
 
@@ -59,6 +61,8 @@ Route::get('/editjurusan/{id}', [AdminController::class, 'editjurusan'])->middle
 Route::post('/ejurusan/{id}', [AdminController::class, 'ejurusan'])->middleware('auth','ceklevel:admin');
 Route::delete('/deletejurusan/{id}', [AdminController::class, 'deljurusan'])->middleware('auth','ceklevel:admin');
 Route::get('/databerkas', [AdminController::class, 'databerkas'])->middleware('auth','ceklevel:admin');
+Route::get('/datalaporan',[AdminController::class, 'vlaporan'])->middleware('auth','ceklevel:admin');
+Route::get('/tampildetail/{jurusan}',[AdminController::class, 'dlaporan'])->middleware('auth','ceklevel:admin');
 
 Route::get('/tampiluser/{id_siswa}', [AdminController::class, 'show']);
 Route::delete('/deletedata/{id_siswa}', [AdminController::class, 'destroy']);

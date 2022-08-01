@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class DataSiswa extends Model
 {
     protected $fillable = [
-        'nisn',
-        'nama_lengkap',
-        'jenis_kelamin',
+            'nisn',
+            'nama_lengkap',
+            'jenis_kelamin',
             'tempat_lahir',
             'tanggal_lahir',
             'nik',

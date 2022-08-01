@@ -372,9 +372,10 @@
                                 <label for="jurusan" class="col-sm-4 col-form-label">PILIH JURUSAN (*)</label>
                                 <select type="text" name="jurusan" id="jurusan" class="form-control">
                                     <option value="">-- Pilih --</option>
-                                    <option value="OTKP">Otomatisasi dan Tata Kelola Perkantoran</option>
-                                    <option value="TKJ">Teknik Komputer Dan Jaringan</option>
-                                    <option value="AK">Akuntansi</option>
+                                    @foreach ($jurusan as $s)
+                                        
+                                    <option value="{{$s->nama_jurusan}}">{{$s->nama_jurusan}}</option>
+                                    @endforeach
                                     </select>
                             </div>
                             <div class="form-group row">

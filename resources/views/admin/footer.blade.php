@@ -47,6 +47,6 @@
       });
   });
 </script>
-
+@yield('chart')
 </body>
 </html>

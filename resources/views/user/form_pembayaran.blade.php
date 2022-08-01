@@ -33,7 +33,12 @@
             <div class="form-group row">
                 <label for="tlahir_ayh" class="col-sm-4 col-form-label">Jurusan</label>
                 <div class="col-sm-8">
-                    <input type="text" name="jurusan" class="form-control" value="{{$item->jurusan}}" readonly>
+                    {{-- <input type="text" name="jurusan" class="form-control" value="{{$item->jurusan}}" readonly> --}}
+                    <select type="text" name="jurusan" id="jurusan" class="form-control">
+                        @foreach ($datajurusan as $item)                         
+                        <option value="{{$item->nama_jurusan}}">{{$item->nama_jurusan}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 @endforeach
             </div>
@@ -46,7 +51,7 @@
             <div class="form-group row">
                 <label for="tlahir_ayh" class="col-sm-4 col-form-label">Bukti Transaksi</label>
                 <div class="col-sm-8">
-                    <input type="file" name="bukti" id="image">
+                    <input type="file" name="bukti" id="image" required>
                 </div>
             </div>
                 <div class="card-footer">
